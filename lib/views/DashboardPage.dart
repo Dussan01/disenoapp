@@ -1,9 +1,12 @@
+import 'package:disenoapp/controller/Auth.dart';
 import 'package:disenoapp/controller/Contente.dart';
 import 'package:disenoapp/widgets/ListTitle.dart';
 import 'package:disenoapp/widgets/MenuPage.dart';
 import 'package:flutter/material.dart';
 
 class DashbordPage extends StatefulWidget {
+  DashbordPage({this.auth});
+  final BaseAuth auth;
   @override
   _DashbordPageState createState() => _DashbordPageState();
 }
