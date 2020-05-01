@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class GaleriaPage extends StatelessWidget {
   final List<City> _allCities = City.allCities();
 
-  GaleriaPage() {}
+  
 
   @override
   Widget build(BuildContext context) {

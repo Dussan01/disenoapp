@@ -1,8 +1,13 @@
+import 'package:disenoapp/controller/Auth.dart';
 import 'package:disenoapp/views/LoginPage.dart';
 import 'package:disenoapp/widgets/PlantillaWidget.dart';
 import 'package:flutter/material.dart';
 
 class BienvenidaPage extends StatefulWidget {
+  BienvenidaPage({this.auth, this.onSignIn});
+    final BaseAuth auth;
+  final VoidCallback onSignIn;
+
   @override
   _BienvenidaPageState createState() => _BienvenidaPageState();
 }
@@ -35,7 +40,7 @@ class _BienvenidaPageState extends State<BienvenidaPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => LoginPage(),
+              builder: (context) => LoginPage(auth: widget.auth, onSignIn: widget.onSignIn,),
             ),
           );
         },

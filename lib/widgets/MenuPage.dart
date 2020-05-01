@@ -112,11 +112,13 @@ class _MenuState extends State<Menu> {
                     titulo: "Reclamos",
                     color: Colors.yellow,
                     onpress: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new ReclamosPage()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (BuildContext context) =>
+                      //             new ReclamosPage(),
+                      //             ),
+                      //             );
                     },
                   ),
                   Button(

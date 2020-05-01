@@ -2,7 +2,7 @@
 import 'package:disenoapp/views/MapaPage.dart';
 
 abstract class Content {
-  Future<MapaPage> mapa();
+  // Future<MapaPage> mapa();
   // Future<ListaMiCultivosPage> micultivo(String id);
   // Future<SectorGeograficoPage> sector();
   // Future<PeriodoPage> periodo();
@@ -15,10 +15,10 @@ abstract class Content {
 }
 
 class ContentPage implements Content {
-  @override
-  Future<MapaPage> mapa() async {
-    return MapaPage();
-  }
+  // @override
+  // Future<MapaPage> mapa() async {
+  //   return MapaPage();
+  // }
 
   // Future<HomePageRecipes> lista() async {
   //   return HomePageRecipes();

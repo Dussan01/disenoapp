@@ -1,9 +1,8 @@
 
+import 'package:disenoapp/models/UserModel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:disenoapp/models/User_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 
 
 abstract class BaseAuth {
@@ -24,7 +23,8 @@ Future<String> signInEmailPassword(String email, String password) async {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password
-        )) .user;
+        )).user;
+        return 'Listo';
   }
 //Le pasamos el modelo para el metodo registrar
 Future<String> signUpEmailPassword(Usuario usuarioModel) async {
@@ -55,7 +55,7 @@ Future<String> signUpEmailPassword(Usuario usuarioModel) async {
 
 // Metodo cerrar session
   Future<void> signOut() async {
-    return _firebaseAuth.signOut();     
+    return _firebaseAuth.signOut();
   }
 
 // Metodo Estado del Usuario

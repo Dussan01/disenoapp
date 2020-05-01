@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:disenoapp/controller/Auth.dart';
-import 'package:disenoapp/models/User_model.dart';
+import 'package:disenoapp/models/UserModel.dart';
+import 'package:disenoapp/views/DashboardPage.dart';
 import 'package:disenoapp/views/DashboardPage.dart';
 import 'package:disenoapp/widgets/PlantillaWidget.dart';
 import 'package:flutter/material.dart';
@@ -156,100 +157,73 @@ class _LoginPageState extends State<LoginPage> {
                       image: AssetImage('assets/imagenes/logo.png'))),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 200, left: 50, right: 50),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50),
-              child: TextFormField(
-                decoration: InputDecoration(
-                    prefixIcon: Icon(FontAwesomeIcons.envelope),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                      borderSide: BorderSide(
-                        color: Colors.amber,
-                        style: BorderStyle.solid,
-                      ),
-                    )),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 270, left: 50, right: 50),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50),
-              child: TextFormField(
-                keyboardType: TextInputType.text,
-                obscureText: _obscureText,
-                decoration: InputDecoration(
-                    prefixIcon: Icon(FontAwesomeIcons.key),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                      borderSide: BorderSide(
-                        color: Colors.yellow,
-                        style: BorderStyle.solid,
-                      ),
+          Form(
+            key: formKey,
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 220, left: 50, right: 50),
+                  child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(FontAwesomeIcons.envelope),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            borderSide: BorderSide(
+                              color: Colors.amber,
+                              style: BorderStyle.solid,
+                            ),
+                          )),
+                      validator: (value) =>
+                          value.isEmpty ? 'El campo Email está vacio' : null,
+                      onSaved: (value) => _email = value.trim()),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 15, left: 50, right: 50, bottom: 10),
+                  child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      obscureText: _obscureText,
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(FontAwesomeIcons.key),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            borderSide: BorderSide(
+                              color: Colors.yellow,
+                              style: BorderStyle.solid,
+                            ),
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                            child: Icon(
+                              _obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          )),
+                      validator: (value) =>
+                          value.isEmpty ? 'El campo Email está vacio' : null,
+                      onSaved: (value) => _password = value.trim()),
+                ),
+                RaisedButton(
+                  onPressed: _validarEnviar,
+                  child: Text(
+                    "Logear",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
                     ),
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _obscureText = !_obscureText;
-                        });
-                      },
-                      child: Icon(
-                        _obscureText ? Icons.visibility : Icons.visibility_off,
-                      ),
-                    )),
-                validator: (value) => value.isEmpty
-                    ? 'El campo de la contraseña debe tener\nal menos 6 caracteres'
-                    : null,
-                onSaved: (value) => _password = value.trim(),
-              ),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 80),
+                  color: Colors.yellow,
+                ),
+              ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 390, left: 60),
-            child: RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DashbordPage(),
-                  ),
-                );
-              },
-              child: Text(
-                "Logear",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 80),
-              color: Colors.yellow,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 440, left: 60),
-            child: RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DashbordPage(),
-                  ),
-                );
-              },
-              child: Text(
-                "Registro",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 72),
-              color: Colors.yellow,
-            ),
-          )
         ],
       ),
     );
