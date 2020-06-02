@@ -3,6 +3,7 @@ import 'package:disenoapp/controller/Auth.dart';
 import 'package:disenoapp/models/UserModel.dart';
 import 'package:disenoapp/views/DashboardPage.dart';
 import 'package:disenoapp/views/DashboardPage.dart';
+import 'package:disenoapp/widgets/ButtonsLogin.dart';
 import 'package:disenoapp/widgets/PlantillaWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -118,7 +119,10 @@ class _LoginPageState extends State<LoginPage> {
         String userId = await widget.auth.signUpEmailPassword(usuario);
         print('Usuario logueado : $userId'); //ok
         widget.onSignIn();
-        DashbordPage(auth: widget.auth); //menu_page.dart
+        DashbordPage(
+          auth: widget.auth,
+          id: userId,
+        ); //menu_page.dart
         Navigator.of(context).pop();
       } catch (e) {
         print('Error .... $e');
@@ -140,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.only(top: 40, bottom: 10, left: 28),
             child: Container(
-              height: 450,
+              height: 500,
               width: 300,
               decoration: BoxDecoration(
                   image: DecorationImage(
@@ -221,6 +225,34 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.symmetric(horizontal: 80),
                   color: Colors.yellow,
                 ),
+                Column(
+                  children: <Widget>[
+                    ButtonsLogin(
+                      titulo: 'Ingresar con Google',
+                      icons: FontAwesomeIcons.google,
+                      colorButton: Color.fromRGBO(252, 56, 83, 1.0),
+                      onPress: () {
+                        widget.auth.signInWithGoogle().whenComplete(() {
+                          widget.onSignIn();
+                          DashbordPage(auth: widget.auth);
+                          Navigator.of(context).pop();
+                        });
+                      },
+                    ),
+                    ButtonsLogin(
+                      titulo: 'Ingresar con Facebook',
+                      icons: FontAwesomeIcons.facebook,
+                      colorButton: Color.fromRGBO(40, 115, 201, 1.0),
+                      onPress: () {
+                        widget.auth.handleFacebook().whenComplete(() {
+                          widget.onSignIn();
+                          DashbordPage(auth: widget.auth);
+                          Navigator.of(context).pop();
+                        });
+                      },
+                    ),
+                  ],
+                )
               ],
             ),
           ),

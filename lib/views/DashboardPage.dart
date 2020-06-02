@@ -5,8 +5,9 @@ import 'package:disenoapp/widgets/MenuPage.dart';
 import 'package:flutter/material.dart';
 
 class DashbordPage extends StatefulWidget {
-  DashbordPage({this.auth, this.onSignedOut});
+  DashbordPage({this.auth, this.onSignedOut, this.id});
   final BaseAuth auth;
+  final String id;
   final VoidCallback onSignedOut;
   @override
   _DashbordPageState createState() => _DashbordPageState();
@@ -24,7 +25,7 @@ class _DashbordPageState extends State<DashbordPage> {
   }
 
 
-  Widget contentPage = Menu();
+  // Widget contentPage = Menu();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +89,7 @@ class _DashbordPageState extends State<DashbordPage> {
                     color: Colors.black,
                   ),
                   titulo: "Telefonos",
+                  
                 ),
                 Divider(height: 2.0, color: Colors.black),
                 ListTitle(
@@ -96,6 +98,7 @@ class _DashbordPageState extends State<DashbordPage> {
                     color: Colors.black,
                   ),
                   titulo: "Otros",
+                  onTap: null,
                 ),
                 Divider(height: 2.0, color: Colors.black),
                 ListTitle(
@@ -117,7 +120,7 @@ class _DashbordPageState extends State<DashbordPage> {
         backgroundColor: Colors.yellow,
         title: Text(''),
       ),
-      body: contentPage,
+      body: Menu(id: widget.id)//contentPage,
     );
   }
 }

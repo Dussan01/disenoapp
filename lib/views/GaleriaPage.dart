@@ -13,8 +13,9 @@ class GaleriaPage extends StatelessWidget {
         appBar: new AppBar(
           backgroundColor: Colors.yellow,
           title: new Text(
-            "Cites around world",
+            "Cites around world", 
             style: new TextStyle(
+              
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87),

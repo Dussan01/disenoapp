@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:disenoapp/views/CalendarioPage.dart';
 import 'package:disenoapp/views/GaleriaPage.dart';
 import 'package:disenoapp/views/MapaPage.dart';
@@ -7,11 +8,15 @@ import 'package:disenoapp/widgets/FormCard.dart';
 import 'package:flutter/material.dart';
 
 class Menu extends StatefulWidget {
+  Menu({this.id});
+  final String id;
   @override
   _MenuState createState() => _MenuState();
 }
 
 class _MenuState extends State<Menu> {
+ 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -112,13 +117,15 @@ class _MenuState extends State<Menu> {
                     titulo: "Reclamos",
                     color: Colors.yellow,
                     onpress: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (BuildContext context) =>
-                      //             new ReclamosPage(),
-                      //             ),
-                      //             );
+                      print(widget.id);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => new ReclamosPage(
+                            id: widget.id,
+                          ),
+                        ),
+                      );
                     },
                   ),
                   Button(

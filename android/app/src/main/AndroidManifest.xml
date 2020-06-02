@@ -9,6 +9,8 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="disenoapp"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:value="@string/facebook_app_id" android:name="com.facebook.sdk.ApplicationId"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
